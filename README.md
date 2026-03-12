@@ -7,4 +7,3 @@ SecureOps is a full-stack enterprise admin dashboard built with React, TypeScrip
 - Role Based Access Control
 - Transaction Management
 - Dashboard Analytics
-- Secure API Layer
