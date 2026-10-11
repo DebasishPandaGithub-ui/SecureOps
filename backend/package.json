@@ -1,16 +1,13 @@
 {
-  "name": "backend",
+  "name": "secureops-backend",
   "version": "1.0.0",
+  "private": true,
   "type": "module",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "check": "node --check src/server.js && node --check src/controllers/authController.js && node --check src/middleware/authMiddleware.js && node --check src/routes/authRoutes.js && node --check src/routes/userRoutes.js && node --check src/routes/transactionRoutes.js && node --check src/routes/dashboardRoutes.js && node --check src/models/User.js && node --check src/models/Transaction.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
