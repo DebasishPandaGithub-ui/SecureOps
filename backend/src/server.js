@@ -6,7 +6,7 @@ import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import transactionRoutes from "./routes/transactionRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
-
+import transactionIntelligenceRoutes from "./routes/transactionIntelligenceRoutes.js";
 const app = express();
 const port = Number(process.env.PORT) || 5000;
 const isProduction = process.env.NODE_ENV === "production";
@@ -81,15 +81,28 @@ function createRateLimiter({ windowMs, limit, message }) {
   };
 }
 const apiLimiter = createRateLimiter({ windowMs: 15 * 60 * 1000, limit: 300, message: "Too many requests. Please try again later." });
-const authLimiter = createRateLimiter({ windowMs: 15 * 60 * 1000, limit: 10, message: "Too many authentication attempts. Please try again later." });
+
+const authLimiter = createRateLimiter({
+  windowMs: 15 * 60 * 1000,
+  limit: 10,
+  message: "Too many authentication attempts. Please try again later."
+});
+
+const registerLimiter = createRateLimiter({
+  windowMs: 15 * 60 * 1000,
+  limit: 5,
+  message: "Too many registration attempts. Please try again later."
+});
 app.use("/api", apiLimiter);
-app.use("/api/auth/register", authLimiter);
+app.use("/api/auth/register", registerLimiter);
 app.use("/api/auth/login", authLimiter);
+
 
 app.get("/api/health", (_req, res) => res.json({ status: "ok", database: mongoose.connection.readyState === 1 ? "connected" : "disconnected", service: "SecureOps API" }));
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/transactions", transactionRoutes);
+app.use("/api/transaction-intelligence", transactionIntelligenceRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use((_req, res) => res.status(404).json({ message: "Route not found." }));
 app.use((error, _req, res, _next) => {

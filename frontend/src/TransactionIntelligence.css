@@ -1,0 +1,229 @@
+
+.intelligence-page {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  color: var(--text-primary, #f8fafc);
+}
+
+.intelligence-header,
+.intelligence-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.intelligence-header h1 {
+  margin: 4px 0 8px;
+  font-size: clamp(24px, 3vw, 32px);
+}
+
+.intelligence-eyebrow {
+  margin: 0;
+  color: #60a5fa;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.intelligence-subtitle,
+.intelligence-panel-header p {
+  margin: 0;
+  color: var(--text-secondary, #94a3b8);
+  font-size: 13px;
+}
+
+.intelligence-refresh,
+.intelligence-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid var(--border, #334155);
+  border-radius: 9px;
+  background: var(--surface, #172033);
+  color: inherit;
+  cursor: pointer;
+}
+
+.intelligence-refresh:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+.intelligence-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.intelligence-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 18px;
+  border: 1px solid var(--border, #334155);
+  border-radius: 12px;
+  background: var(--surface, #111827);
+}
+
+.intelligence-stat span,
+.intelligence-detail-grid span {
+  color: var(--text-secondary, #94a3b8);
+  font-size: 12px;
+}
+
+.intelligence-stat strong {
+  font-size: 27px;
+}
+
+.risk-high > svg {
+  color: #ef4444;
+}
+
+.risk-medium > svg {
+  color: #f59e0b;
+}
+
+.risk-low > svg {
+  color: #22c55e;
+}
+
+.intelligence-panel {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border, #334155);
+  border-radius: 14px;
+  background: var(--surface, #111827);
+}
+
+.intelligence-panel-header {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border, #334155);
+}
+
+.intelligence-panel-header h2 {
+  margin: 0 0 7px;
+  font-size: 17px;
+}
+
+.intelligence-panel-header select {
+  max-width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border, #475569);
+  border-radius: 8px;
+  background: var(--surface, #172033);
+  color: inherit;
+}
+
+.intelligence-graph {
+  width: 100%;
+  height: 590px;
+  background-color: var(--surface, #0b1220);
+}
+
+.intelligence-graph .react-flow__attribution {
+  display: none;
+}
+
+.intelligence-state {
+  display: grid;
+  min-height: 240px;
+  place-items: center;
+  padding: 24px;
+  color: var(--text-secondary, #94a3b8);
+  text-align: center;
+}
+
+.intelligence-error {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid #ef4444;
+  border-radius: 10px;
+  color: #fca5a5;
+}
+
+.intelligence-error button {
+  margin-left: auto;
+  padding: 7px 12px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.intelligence-details {
+  padding-bottom: 18px;
+}
+
+.intelligence-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 20px;
+}
+
+.intelligence-detail-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.intelligence-detail-grid strong {
+  overflow-wrap: anywhere;
+  font-size: 14px;
+}
+
+.intelligence-details h3,
+.intelligence-details > p,
+.intelligence-reasons {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.intelligence-reasons {
+  padding-left: 20px;
+  color: #fbbf24;
+  line-height: 1.8;
+}
+
+.intelligence-note,
+.intelligence-disclaimer {
+  color: var(--text-secondary, #94a3b8);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.intelligence-note {
+  padding: 0 18px;
+}
+
+@media (max-width: 850px) {
+  .intelligence-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .intelligence-graph {
+    height: 480px;
+  }
+}
+
+@media (max-width: 480px) {
+  .intelligence-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .intelligence-graph {
+    height: 400px;
+  }
+
+  .intelligence-stat {
+    padding: 13px;
+  }
+}
